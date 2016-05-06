@@ -13,18 +13,12 @@ class PaypalPaymentController extends Controller
 
     public function indexAction()
     {
-        $requestAPI = 'curl -v https://api.sandbox.paypal.com/v1/oauth2/token \
-            -H "Accept: application/json" \
-            -H "Accept-Language: en_US" \
-            -u "'. $this->getParameter('client_id') . '":"'. $this->getParameter('client_secret') . '" \
-            -d "grant_type=client_credentials"';
+        $clientId = $this->getParameter('client_id');
 
-        $json = exec($requestAPI);
-        var_dump($json);
-        die();
-        curl_close($curl);
-        die();
-        // replace this example code with whatever you need
-        return new Response("Hello World !");
+        $clientSecret = $this->getParameter('client_secret');
+
+        $authRequest = $this->get('api_request')->sendAuthRequest($clientId, $clientSecret);
+
+        return new Response($authRequest);
     }
 }
