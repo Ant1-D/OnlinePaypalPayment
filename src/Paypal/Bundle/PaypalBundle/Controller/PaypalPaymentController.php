@@ -13,7 +13,8 @@ class PaypalPaymentController extends Controller
 
     public function indexAction()
     {
-        die($this->clientId);
+        echo $this->getParameter('client_id');
+        echo $this->getParameter('client_secret');
         // replace this example code with whatever you need
         return new Response("Hello World !");
     }
