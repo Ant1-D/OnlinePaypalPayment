@@ -7,6 +7,10 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 
+/**
+ * Class PaypalBundleExtension
+ * @package Paypal\Bundle\PaypalBundle\DependencyInjection
+ */
 class PaypalBundleExtension extends Extension
 {
     /**

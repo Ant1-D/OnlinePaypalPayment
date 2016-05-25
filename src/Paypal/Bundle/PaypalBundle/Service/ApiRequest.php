@@ -2,18 +2,63 @@
 
 namespace Paypal\Bundle\PaypalBundle\Service;
 
+/**
+ * Class ApiRequest
+ * @package Paypal\Bundle\PaypalBundle\Service
+ */
 class ApiRequest
 {
+    /**
+     * @param $clientId
+     * @param $clientSecret
+     * @return mixed
+     */
     public function sendAuthRequest($clientId, $clientSecret)
     {
+
         $requestAPI = 'curl -v https://api.sandbox.paypal.com/v1/oauth2/token \
             -H "Accept: application/json" \
             -H "Accept-Language: en_US" \
             -u "'. $clientId . '":"'. $clientSecret . '" \
             -d "grant_type=client_credentials"';
 
-        $json = json_decode(exec($requestAPI));
+        $data = json_decode(exec($requestAPI), true);
 
-        return $json;
+        return $data;
+    }
+
+    /**
+     * @param $accessToken
+     * @param $orderInfos
+     * @return mixed
+     */
+    public function createPayment($accessToken, $orderInfos){
+
+        $createPaymentRequest = 'curl -v https://api.sandbox.paypal.com/v1/payments/payment \
+            -H "Content-Type:application/json" \
+            -H "Authorization: Bearer '.$accessToken.' " \
+            -d \'{
+                "intent":"sale",
+                "redirect_urls":{
+                  "return_url":"http://www.online-paypal-payment.dev/index",
+                  "cancel_url":"http://www.online-paypal-payment.dev/index"
+                },
+                "payer":{
+                  "payment_method":"'.$orderInfos['payment_method'].'"
+                },
+                "transactions":[
+                  {
+                    "amount":{
+                      "total":"'.$orderInfos['amount'].'",
+                      "currency":"'.$orderInfos['currency'].'"
+                    },
+                    "description":"'.$orderInfos['description'].'"
+                  }
+                ]
+              }\'';
+
+        $data = json_decode(exec($createPaymentRequest), true);
+
+        return $data;
     }
 }
