@@ -2,5 +2,5 @@ app:
     resource: "@PaypalBundle/Controller"
     type:     annotation
 PaypalBundle:
-    path:     /index
+    path:     /
     defaults: { _controller: PaypalBundle:PaypalPayment:index }

@@ -23,49 +23,30 @@ class PaypalOrder
 
     /**
      * @var string
-     *
      * @ORM\Column(name="price", type="decimal", precision=10, scale=0)
      */
     private $price;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="currency", type="string", length=3)
      */
     private $currency;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="cancel_url", type="text")
-     */
-    private $cancelUrl;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="return_url", type="text")
-     */
-    private $returnUrl;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="payment_method", type="string", length=255)
      */
     private $paymentMethod;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="intent", type="string", length=255)
      */
     private $intent;
@@ -151,54 +132,6 @@ class PaypalOrder
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set cancelUrl
-     *
-     * @param string $cancelUrl
-     *
-     * @return PaypalOrder
-     */
-    public function setCancelUrl($cancelUrl)
-    {
-        $this->cancelUrl = $cancelUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get cancelUrl
-     *
-     * @return string
-     */
-    public function getCancelUrl()
-    {
-        return $this->cancelUrl;
-    }
-
-    /**
-     * Set returnUrl
-     *
-     * @param string $returnUrl
-     *
-     * @return PaypalOrder
-     */
-    public function setReturnUrl($returnUrl)
-    {
-        $this->returnUrl = $returnUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get returnUrl
-     *
-     * @return string
-     */
-    public function getReturnUrl()
-    {
-        return $this->returnUrl;
     }
 
     /**

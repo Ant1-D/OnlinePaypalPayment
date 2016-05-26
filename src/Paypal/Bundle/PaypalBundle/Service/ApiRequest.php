@@ -8,6 +8,7 @@ namespace Paypal\Bundle\PaypalBundle\Service;
  */
 class ApiRequest
 {
+
     /**
      * @param $clientId
      * @param $clientSecret
@@ -40,16 +41,16 @@ class ApiRequest
             -d \'{
                 "intent":"sale",
                 "redirect_urls":{
-                  "return_url":"http://www.online-paypal-payment.dev/index",
-                  "cancel_url":"http://www.online-paypal-payment.dev/index"
+                  "return_url":"http://www.online-paypal-payment.dev/finalization",
+                  "cancel_url":"http://www.online-paypal-payment.dev/cancel"
                 },
                 "payer":{
-                  "payment_method":"'.$orderInfos['payment_method'].'"
+                  "payment_method":"paypal"
                 },
                 "transactions":[
                   {
                     "amount":{
-                      "total":"'.$orderInfos['amount'].'",
+                      "total":"'.$orderInfos['price'].'",
                       "currency":"'.$orderInfos['currency'].'"
                     },
                     "description":"'.$orderInfos['description'].'"
@@ -58,6 +59,23 @@ class ApiRequest
               }\'';
 
         $data = json_decode(exec($createPaymentRequest), true);
+
+        return $data;
+    }
+
+    /**
+     * @param $accessToken
+     * @param $payerId
+     * @return mixed
+     */
+    public function executePayment($accessToken, $paymentInfos){
+
+        $executePaymentRequest = 'curl -v https://api.sandbox.paypal.com/v1/payments/payment/'.$paymentInfos['paymentId'].'/execute/ \
+                -H "Content-Type:application/json" \
+                -H "Authorization: Bearer '.$accessToken.'" \
+                -d \'{ "payer_id" : "'.$paymentInfos['PayerID'].'" }\'';
+
+        $data = json_decode(exec($executePaymentRequest), true);
 
         return $data;
     }
