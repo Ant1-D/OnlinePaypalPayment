@@ -41,8 +41,8 @@ class ApiRequest
             -d \'{
                 "intent":"sale",
                 "redirect_urls":{
-                  "return_url":"http://www.online-paypal-payment.dev/finalization",
-                  "cancel_url":"http://www.online-paypal-payment.dev/cancel"
+                  "return_url":"http://projets.odop.fr/OnlinePaypalPayment/web/finalization",
+                  "cancel_url":"http://projets.odop.fr/OnlinePaypalPayment/web/cancel"
                 },
                 "payer":{
                   "payment_method":"paypal"
@@ -59,7 +59,7 @@ class ApiRequest
               }\'';
 
         $data = json_decode(exec($createPaymentRequest), true);
-
+        var_dump($data);
         return $data;
     }
 

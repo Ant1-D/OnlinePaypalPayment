@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 /**
  * Class OrderType
@@ -21,27 +22,11 @@ class OrderType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('price', TextType::class)
-            ->add('currency', ChoiceType::class, array(
-                'choices' => array(
-                    'Euro' => 'EUR',
-                    'Dollar' => 'USD'
-                ),
-                'required'    => true,
-                'placeholder' => 'Choose your currency',
-                'empty_data'  => null
-            ))
-            ->add('description', TextType::class)
-            ->add('intent', ChoiceType::class, array(
-                'choices' => array(
-                    'Sale' => 'sale',
-                    'Order' => 'order'
-                ),
-                'required'    => true,
-                'placeholder' => 'Choose your intent',
-                'empty_data'  => null
-            ))
-            ->add('save', SubmitType::class, array('label' => 'Create Order'))
+            ->add('price', HiddenType::class)
+            ->add('currency', HiddenType::class)
+            ->add('description', HiddenType::class)
+            ->add('intent', HiddenType::class)
+            ->add('save', SubmitType::class, array('label' => 'Acheter'))
         ;
     }
 }
