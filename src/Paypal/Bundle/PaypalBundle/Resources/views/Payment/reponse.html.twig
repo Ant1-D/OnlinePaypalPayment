@@ -1,0 +1,85 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Online Paypal Payment</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/csshake.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="inner cover">
+                <h1 class="cover-heading">Online Paypal Payment</h1>
+                <p class="lead">Solution de payment en ligne grâce à paypal.</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        {{ form_start(form) }}
+                        <div class="thumbnail">
+                            <img src="img/imac.jpg" alt="...">
+                            {{ form_widget(form.price, {'attr': {'value': '2599'}}) }}
+                            {{ form_widget(form.currency, {'attr': {'value': 'EUR'}}) }}
+                            {{ form_widget(form.description, {'attr': {'value': 'iMac 27'}}) }}
+                            {{ form_widget(form.intent, {'attr': {'value': 'order'}}) }}
+                            <div class="caption">
+                                <h3>iMac 27"</h3>
+                                <p>Processeur : Intel Core i5 quadricoeur à 3,2 GHz, Mémoire : 8 Go DDR3, Stockage : 2 To Fusion Drive, Ecran 27" Retina 5K</p>
+                                <p><span class="btn btn-danger">2599€</span> {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}</p>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <img src="img/iphone.jpg" alt="Apple iPhone 6s, 64 Go, 4.7'' Gris Sidéral">
+                            <div class="caption">
+                                <h3>iPhone 6s</h3>
+                                <p>Smartphone 4G, Fonction GPS, iOS 9, Appareil photo iSight 12 Mp, Appareil photo frontal : 5 Mp, Bluetooth 4.2, WiFi, Vidéo 4K, 64 Go</p>
+                                <p><span class="btn btn-danger">859€</span> <a href="#" class="btn btn-primary" role="button">Acheter</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <img src="img/iwatch.jpg" alt="...">
+                            <div class="caption">
+                                <h3>Apple Watch</h3>
+                                <p>	Cristal de saphir, Dos en céramique, Couronne digitale, Capteur de luminosité ambiante, Haut-parleur et microphone</p>
+                                <p><span class="btn btn-danger">1015€</span> <a href="#" class="btn btn-primary" role="button">Acheter</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <img src="img/tv.jpg" alt="...">
+                            <div class="caption">
+                                <h3>Apple TV 64 Go</h3>
+                                <p>L’Apple TV est compatible avec les téléviseurs HD équipés d’une prise HDMI, 64 bits. Capacité : 64 Go, Bluetooth 4.0, WiFi, Ethernet</p>
+                                <p><span class="btn btn-danger">229€</span> <a href="#" class="btn btn-primary" role="button">Acheter</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
