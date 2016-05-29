@@ -66,7 +66,7 @@ class PaypalPaymentController extends Controller
         $accessToken = $this->get('session')->get('access_token');
         $createPayment = $this->get('api_request')->executePayment($accessToken, $paymentInfos);
         if($createPayment['state']=='approved'){
-            $status = 'succes';
+            $status = 'success';
             $reponse = 'Paiement réalisé avec succès !';
         }else{
             $status = 'danger';
