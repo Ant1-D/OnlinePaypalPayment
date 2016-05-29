@@ -73,7 +73,7 @@ class PaypalPaymentController extends Controller
             $reponse = 'Une erreur est survenue lors du paiement !';
         }
 
-        return $this->render('PaypalBundle:Payment:index.html.twig', array(
+        return $this->render('PaypalBundle:Payment:reponse.html.twig', array(
             'status' => $status,
             'reponse' => $reponse,
         ));
